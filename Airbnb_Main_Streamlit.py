@@ -11,13 +11,13 @@ from PIL import Image
 
 #✈️
 # page configuration
-icon = Image.open(r"C:\Users\Akash\Downloads\airbnb-logo (1).png")
+icon = Image.open(r"C:\Users\Akash\Desktop\pROJECT_Airbnb\airbnb-logo (1).png")
 st.set_page_config(page_title= "Airbnb Data Visualization",
                    page_icon= icon,
                    layout= "wide",
                    initial_sidebar_state= "expanded",
                    menu_items={'About': """# This dashboard app is created by *Aakash.K*!
-                                        from Mongodb atlas data"""}
+                                        """}
                   )
 
 
@@ -59,8 +59,8 @@ df = pd.read_csv('Airbnb_data.csv')
 # HOME PAGE
 if selected == "Home":
     
-    img1= Image.open(r"C:\Users\Akash\Downloads\1589701567385.png")
-    img2= Image.open(r"C:\Users\Akash\Downloads\timeline-airbnb.png")
+    img1= Image.open(r"C:\Users\Akash\Desktop\pROJECT_Airbnb\1589701567385.png")
+    img2= Image.open(r"C:\Users\Akash\Desktop\pROJECT_Airbnb\timeline-airbnb.png")
     st.image(img1)
     st.markdown("""
     <p style='font-size:25px;font-family: Lucida Console'>Airbnb, Inc. is an American San Francisco-based company operating an online marketplace for short- and long-term homestays and experiences.
@@ -105,7 +105,7 @@ if selected == "Overview":
         country = st.sidebar.multiselect('Select a Country',sorted(df.Country.unique()),sorted(df.Country.unique()))
         proprety = st.sidebar.multiselect('Select Property_type',sorted(df.Property_type.unique()),sorted(df.Property_type.unique()))
         room = st.sidebar.multiselect('Select Room_type',sorted(df.Room_type.unique()),sorted(df.Room_type.unique()))
-        price = st.slider('Select Price',df.Price.min(),df.Price.max(),(df.Price.min(),df.Price.max()))
+        price = st.slider('Select Price(Currency)',df.Price.min(),df.Price.max(),(df.Price.min(),df.Price.max()))
         
         # CONVERTING THE USER INPUT INTO QUERY
         query = f'Country in {country} & Room_type in {room} & Property_type in {proprety} & Price >= {price[0]} & Price <= {price[1]}'
@@ -170,7 +170,7 @@ if selected == "Explore":
     country = st.sidebar.multiselect('Select a Country',sorted(df.Country.unique()),sorted(df.Country.unique()))
     proprety = st.sidebar.multiselect('Select Property_type',sorted(df.Property_type.unique()),sorted(df.Property_type.unique()))
     room = st.sidebar.multiselect('Select Room_type',sorted(df.Room_type.unique()),sorted(df.Room_type.unique()))
-    price = st.slider('Select Price',df.Price.min(),df.Price.max(),(df.Price.min(),df.Price.max()))
+    price = st.slider('Select Price(Currency)',df.Price.min(),df.Price.max(),(df.Price.min(),df.Price.max()))
     
     # uner input convert
     query = f'Country in {country} & Room_type in {room} & Property_type in {proprety} & Price >= {price[0]} & Price <= {price[1]}'
